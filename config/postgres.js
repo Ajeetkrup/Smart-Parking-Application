@@ -1,0 +1,11 @@
+// for local env
+const Pool = require('pg').Pool
+const pool = new Pool({
+  user: 'me',
+  host: 'localhost',
+  database: 'spa',
+  password: 'password',
+  port: 5432,
+});
+
+module.exports = pool;
