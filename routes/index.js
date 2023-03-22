@@ -1,9 +1,9 @@
 const express = require('express');
 const homeController = require('../controllers/homeController');
-const parkinglotController = require('../controllers/parkinglotController');
 const router = express.Router();
 
 router.get('/', homeController.home);
-router.get('/lot', parkinglotController.getAllLots);
+router.use('/lot', require('./parking_lots'));
+router.use('/bay', require('./bays'));
 
 module.exports = router;
