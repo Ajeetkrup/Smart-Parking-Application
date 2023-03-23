@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  node_spa_app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PG_DB=spa
+      - PG_USER=postgres
+      - PG_PASS=password
+      - PG_HOST=config-node_db-1
+    volumes:
+      - ./spa_backup:/app
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    name: common_net
+    external: true

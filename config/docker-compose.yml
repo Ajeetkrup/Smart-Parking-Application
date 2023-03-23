@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  node_db:
+    image: postgres:15.2
+    ports:
+      - "5432:5432"
+    environment:
+      - PG_DB=spa
+      - PG_USER=postgres
+      - PG_PASS=password
+      - PG_HOST=config-node_db-1
+    volumes:
+      - ./psql_data:/var/lib/postgresql/data
+    networks:
+      - db_net
+
+networks:
+  db_net:
+    driver: bridge
+    name: common_net
